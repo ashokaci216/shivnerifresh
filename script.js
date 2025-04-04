@@ -24,6 +24,7 @@ function displayProducts(products) {
         <button onclick="updateQty('${product.name}', 1)">➕</button>
       </div>
       <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+      <div class="in-cart"id="incart-${product.name}"<>/div>
     `;
     productList.appendChild(card);
   });
@@ -42,6 +43,7 @@ function addToCart(name, price) {
     cart[name] = cart[name] || { price, quantity: 0 };
     cart[name].quantity += qty;
     document.getElementById(`qty-${name}`).innerText = 0;
+    document.getElementById(`incart-${name}`).innerText = `Already in cart: ${cart[name].quantity}`;
     updateCartDisplay();
   }
 }
