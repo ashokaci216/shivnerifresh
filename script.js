@@ -41,7 +41,7 @@ function addToCart(name, price) {
   if (qty > 0) {
     cart[name] = cart[name] || { price, quantity: 0 };
     cart[name].quantity += qty;
-    document.getElementById(`qty-${name}`).innerText = cart[name].quantity;
+    document.getElementById(`qty-${name}`).innerText = 0;
     updateCartDisplay();
   }
 }
