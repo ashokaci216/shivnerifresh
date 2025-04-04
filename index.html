@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shivneri Fresh</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Shivneri Fresh</h1>
+    <p>Mafco Market, Vashi | 📞 9967538209</p>
+    <div id="search-bar">
+      <input type="text" id="searchInput" placeholder="Search products..." />
+      <div id="cart-icon">🛒<span id="cart-count">0</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section id="product-list"></section>
+  </main>
+
+  <section id="cart-section" class="hidden">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <div id="cart-total"></div>
+    <h3>Order Details</h3>
+    <input type="text" id="customerName" placeholder="Customer Name" />
+    <textarea id="customerAddress" placeholder="Customer Address"></textarea>
+    <button id="placeOrder">Place Order via WhatsApp</button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
