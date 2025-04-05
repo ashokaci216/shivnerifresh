@@ -220,6 +220,161 @@
     "category": "Mayo and Sauces"
   },
   {
+    "name": "Mala's Blue Curacao Cordial 750 ml",
+    "price": 255,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Mala's Green Mint Mocktail 750 ml",
+    "price": 255,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Classic Mint Mojito 750 ml",
+    "price": 255,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Citrus Punch Mojito 750ml",
+    "price": 255,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Hazelnut Mocktail Syrup 750ml",
+    "price": 255,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Grenedine Mocktail Syrup 750ml",
+    "price": 255,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Rasberry Moctail Syrup 750ml",
+    "price": 255,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Peach Mocktail Syrup 750ml",
+    "price": 255,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Caramel Mocktail Syrup 750ml",
+    "price": 140,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Kokam Mocktail Syrup 750ml",
+    "price": 140,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Virgin Vanila Syrup 750ml",
+    "price": 175,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Irish Coffee Syrup 750ml",
+    "price": 255,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Ginger Lime Syrup 750ml",
+    "price": 140,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Passion Fruit Syrup 750ml",
+    "price": 255,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Grapes Mocktail Syrup 750ml",
+    "price": 255,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Lemon Ice Tea 750ml",
+    "price": 255,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Peach Ice Tea 750ml",
+    "price": 255,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Strawberry Syrup 750ml",
+    "price": 140,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Alphanso Mango Syrup 750ml",
+    "price": 140,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas PaanShot Syrup 750ml",
+    "price": 140,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Kalakhatta Syrup 750ml",
+    "price": 140,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Orange Syrup 750ml",
+    "price": 140,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Rose Syrup 750ml",
+    "price": 140,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Jeera Masala 750ml",
+    "price": 140,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Jeera Sikanji 750ml",
+    "price": 140,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Khus Syrup 750ml",
+    "price": 140,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Watermelon Syrup 750ml",
+    "price": 140,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Variyali Syrup 750ml",
+    "price": 140,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Pineapple Syrup 750ml",
+    "price": 140,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Mala's Kacha Aam Syrup 750ml",
+    "price": 140,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Kacha Aam Syrup 750 ml",
+    "price": 140,
+    "category": "Syrup & Chocolate"
+  },
+  {
     "name": "Malas Blueberry Crush 1 ltr",
     "price": 368,
     "category": "Syrup & Chocolate"
@@ -237,6 +392,11 @@
   {
     "name": "Malas Mango Crush 1ltr",
     "price": 204,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Malas Blueberry Crush 1ltr",
+    "price": 368,
     "category": "Syrup & Chocolate"
   },
   {
