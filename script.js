@@ -115,3 +115,8 @@ document.getElementById('placeOrder').addEventListener('click', () => {
   const whatsappURL = `https://wa.me/919867378209?text=${encodeURIComponent(message)}`;
   window.open(whatsappURL, '_blank');
 });
+// Cart icon click scrolls to cart section
+document.getElementById('cart-icon').addEventListener('click', () => {
+  document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
+});
+
