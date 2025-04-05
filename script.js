@@ -6,6 +6,7 @@ fetch('products.json')
   .then(res => res.json())
   .then(data => {
     displayProducts(data);
+    displayCategories(data);
     setupSearch(data);
   });
 
@@ -28,6 +29,12 @@ function displayProducts(products) {
     `;
     productList.appendChild(card);
   });
+}
+
+function displayCategories(products) {
+  const categoryListDiv = document.getElementById('category-list');
+  const categories = [...new Set(products.map(p => p.category))];
+  categoryListDiv.innerHTML = `<strong>Categories:</strong> ${categories.join(' | ')}`;
 }
 
 function updateQty(name, change) {
