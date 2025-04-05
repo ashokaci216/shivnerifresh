@@ -18,6 +18,7 @@ function displayProducts(products) {
     card.innerHTML = `
       <h3>${product.name}</h3>
       <p>₹${product.price.toFixed(2)}</p>
+       <p class="category">Category: ${product.category}</p>
       <div class="qty-controls">
         <button onclick="updateQty('${product.name}', -1)">➖</button>
         <span id="qty-${product.name}">0</span>
