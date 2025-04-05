@@ -6,6 +6,7 @@ let allProducts=[];//Store all products for category filtering
 fetch('products.json')
   .then(res => res.json())
   .then(data => {
+    allProducts = data;
     displayProducts(data);
     displayCategories(data);
     setupSearch(data);
