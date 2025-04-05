@@ -1,5 +1,6 @@
 // Global cart object
 let cart = {};
+let allProducts=[];//Store all products for category filtering
 
 // Load products and initialize page
 fetch('products.json')
