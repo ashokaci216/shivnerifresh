@@ -35,9 +35,19 @@ function displayProducts(products) {
 function displayCategories(products) {
   const categoryListDiv = document.getElementById('category-list');
   const categories = [...new Set(products.map(p => p.category))];
-  categoryListDiv.innerHTML = `<strong>Categories:</strong> ${categories.join(' | ')}`;
+  categoryListDiv.innerHTML = `<strong>Categories:</strong> ` + 
+  categories.map(category => `
+    <button class="category-btn" onclick="filterByCategory('${category}')">${category}</button>
+  `).join('');
+ function filterByCategory(category) {
+  fetch('products.json')
+    .then(res => res.json())
+    .then(data => {
+      const filtered = data.filter(product => product.category === category);
+      displayProducts(filtered);
+    });
 }
-
+  
 function updateQty(name, change) {
   const span = document.getElementById(`qty-${name}`);
   let qty = parseInt(span.innerText) + change;
