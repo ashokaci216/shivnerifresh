@@ -200,6 +200,11 @@ body.dark-theme .product-card {
   border: 1px solid #333; /* Optional border to separate cards */
 }
 
+body.dark-theme .product-card h3,
+body.dark-theme .product-card p {
+  color: #f0f0f0;
+}
+
 body.dark-theme .product-card button {
   background: #444;
   color: white;
