@@ -194,6 +194,23 @@ main {
  color:#ffffff;
 }
 
+body.dark-theme .product-card {
+  background: #1e1e1e;
+  color: #f0f0f0;
+  border: 1px solid #333; /* Optional border to separate cards */
+}
+
+body.dark-theme .product-card button {
+  background: #444;
+  color: white;
+  border: 1px solid #555;
+}
+
+body.dark-theme .qty-controls button {
+  background: #555;
+  color: white;
+}
+
 @media (max-width: 768px) {
   #product-list {
     grid-template-columns: repeat(2, 1fr);
