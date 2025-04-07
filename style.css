@@ -129,6 +129,15 @@ main {
   cursor: pointer;
 }
 
+.category-link {
+  cursor: pointer;
+  color: yellow;
+  margin: 0 5px;
+}
+.category-link:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
   #product-list {
     grid-template-columns: repeat(2, 1fr);
