@@ -35,7 +35,7 @@ function displayProducts(products) {
 
 function displayCategories(products) {
   const categoryListDiv = document.getElementById('category-list');
-  const categories = [...new Set(products.map(p => p.category))];
+  const categories = ["All", ...new Set(products.map(p => p.category))];
   categoryListDiv.innerHTML = `<strong>Categories:</strong> ` + 
     categories.map(category => `
       <button class="category-btn" onclick="filterByCategory('${category}')">${category}</button>
@@ -43,8 +43,12 @@ function displayCategories(products) {
 }
 
 function filterByCategory(category) {
-  const filtered = allProducts.filter(product => product.category === category);
-  displayProducts(filtered);
+  if (category === "All") {
+    displayProducts(allProducts);
+  } else {
+    const filtered = allProducts.filter(product => product.category === category);
+    displayProducts(filtered);
+  }
 }
 
 function updateQty(name, change) {
