@@ -112,6 +112,14 @@ main {
   cursor: pointer;
 }
 
+.product-card h3 {
+  min-height: 3em; /* Enough to hold 2 lines */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 .qty-controls {
   margin-top: 10px;
   display: flex;
