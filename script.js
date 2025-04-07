@@ -36,7 +36,7 @@ function displayProducts(products) {
 function displayCategories(products) {
   const categoryListDiv = document.getElementById('category-list');
   const categories = ["All", ...new Set(products.map(p => p.category))];
-  categoryListDiv.innerHTML = `<strong>Categories:</strong> ` + 
+  categoryListDiv.innerHTML = 
     categories.map(category => `
       <button class="category-btn" onclick="filterByCategory('${category}')">${category}</button>
     `).join('');
