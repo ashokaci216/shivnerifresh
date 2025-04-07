@@ -19,8 +19,10 @@ function displayProducts(products) {
     const card = document.createElement('div');
     card.className = 'product-card';
 card.innerHTML = `
-  <h3>${product.name}</h3>
-  <p>₹${product.price.toFixed(2)}</p>
+  <div class="product-info">
+    <h3>${product.name}</h3>
+    <p>₹${product.price.toFixed(2)}</p>
+  </div>
   <div class="qty-controls">
     <button onclick="updateQty('${product.name}', -1)">➖</button>
     <span id="qty-${product.name}">0</span>
