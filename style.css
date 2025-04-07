@@ -189,6 +189,11 @@ main {
   background: #eee;
 }
 
+.dark-mode{
+ background-color:#121212;
+ color:#ffffff;
+}
+
 @media (max-width: 768px) {
   #product-list {
     grid-template-columns: repeat(2, 1fr);
