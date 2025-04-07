@@ -1,6 +1,6 @@
 // Global cart object
 let cart = {};
-let allProducts=[];//Store all products for category filtering
+let allProducts = []; // Store all products for category filtering
 
 // Load products and initialize page
 fetch('products.json')
@@ -27,7 +27,7 @@ function displayProducts(products) {
         <button onclick="updateQty('${product.name}', 1)">➕</button>
       </div>
       <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
-      <div class="in-cart"id="incart-${product.name}"></div>
+      <div class="in-cart" id="incart-${product.name}"></div>
     `;
     productList.appendChild(card);
   });
@@ -37,18 +37,16 @@ function displayCategories(products) {
   const categoryListDiv = document.getElementById('category-list');
   const categories = [...new Set(products.map(p => p.category))];
   categoryListDiv.innerHTML = `<strong>Categories:</strong> ` + 
-  categories.map(category => `
-    <button class="category-btn" onclick="filterByCategory('${category}')">${category}</button>
-  `).join('');
- function filterByCategory(category) {
-  fetch('products.json')
-    .then(res => res.json())
-    .then(data => {
-      const filtered = data.filter(product => product.category === category);
-      displayProducts(filtered);
-    });
+    categories.map(category => `
+      <button class="category-btn" onclick="filterByCategory('${category}')">${category}</button>
+    `).join('');
 }
-  
+
+function filterByCategory(category) {
+  const filtered = allProducts.filter(product => product.category === category);
+  displayProducts(filtered);
+}
+
 function updateQty(name, change) {
   const span = document.getElementById(`qty-${name}`);
   let qty = parseInt(span.innerText) + change;
@@ -134,8 +132,8 @@ document.getElementById('placeOrder').addEventListener('click', () => {
   const whatsappURL = `https://wa.me/919867378209?text=${encodeURIComponent(message)}`;
   window.open(whatsappURL, '_blank');
 });
+
 // Cart icon click scrolls to cart section
 document.getElementById('cart-icon').addEventListener('click', () => {
   document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
 });
-
