@@ -141,3 +141,20 @@ document.getElementById('placeOrder').addEventListener('click', () => {
 document.getElementById('cart-icon').addEventListener('click', () => {
   document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
 });
+
+// Toggle Light/Dark Mode
+document.getElementById('themeToggle').addEventListener('click', () => {
+  document.body.classList.toggle('dark-theme');
+
+  // Optional: Save theme preference to localStorage
+  const isDark = document.body.classList.contains('dark-theme');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
+// Load saved theme on page load
+window.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-theme');
+  }
+});
