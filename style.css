@@ -233,6 +233,16 @@ body.dark-theme #placeOrder {
   color: #fff;
   border: 1px solid #555;
 }
+/* Reset colors in light mode */
+body:not(.dark-theme) .product-card {
+  background: white;
+  color: black;
+}
+
+body:not(.dark-theme) .product-card h3,
+body:not(.dark-theme) .product-card p {
+  color: black;
+}
 
 @media (max-width: 768px) {
   #product-list {
