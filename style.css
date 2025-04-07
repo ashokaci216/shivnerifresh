@@ -36,7 +36,7 @@ header {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 0.3em;
+  margin-top: 10em;
 }
 
 #category-list {
