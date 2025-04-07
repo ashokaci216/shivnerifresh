@@ -18,17 +18,17 @@ function displayProducts(products) {
   products.forEach(product => {
     const card = document.createElement('div');
     card.className = 'product-card';
-    card.innerHTML = `
-      <h3>${product.name}</h3>
-      <p>₹${product.price.toFixed(2)}</p>
-      <div class="qty-controls">
-        <button onclick="updateQty('${product.name}', -1)">➖</button>
-        <span id="qty-${product.name}">0</span>
-        <button onclick="updateQty('${product.name}', 1)">➕</button>
-      </div>
-      <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
-      <div class="in-cart" id="incart-${product.name}"></div>
-    `;
+card.innerHTML = `
+  <h3>${product.name}</h3>
+  <p>₹${product.price.toFixed(2)}</p>
+  <div class="qty-controls">
+    <button onclick="updateQty('${product.name}', -1)">➖</button>
+    <span id="qty-${product.name}">0</span>
+    <button onclick="updateQty('${product.name}', 1)">➕</button>
+  </div>
+  <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+  <div class="in-cart" id="incart-${product.name}"></div>
+`;
     productList.appendChild(card);
   });
 }
