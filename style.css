@@ -120,6 +120,13 @@ main {
   text-align: center;
 }
 
+.product-info {
+  min-height: 70px; /* or more based on your design */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .qty-controls {
   margin-top: 10px;
   display: flex;
