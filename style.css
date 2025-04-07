@@ -216,6 +216,12 @@ body.dark-theme .qty-controls button {
   color: white;
 }
 
+body.dark-theme #cart-section {
+  background-color: #1e1e1e;
+  color: #fff;
+  border: 1px solid #444;
+}
+
 @media (max-width: 768px) {
   #product-list {
     grid-template-columns: repeat(2, 1fr);
