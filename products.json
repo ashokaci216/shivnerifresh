@@ -180,6 +180,11 @@
     "category": "Mayo and Sauces"
   },
   {
+    "name": "Hillers Schezwan Chutney 1kg",
+    "price": 130,
+    "category": "Syrup & Chocolate"
+  },
+  {
     "name": "Chings Chilli Sauce 680gm",
     "price": 55,
     "category": "Mayo and Sauces"
@@ -493,16 +498,6 @@
   {
     "name": "Frappe powder Mojee 1kg",
     "price": 420,
-    "category": "Syrup & Chocolate"
-  },
-  {
-    "name": "Hillers Schezwan Chutney 1kg",
-    "price": 130,
-    "category": "Syrup & Chocolate"
-  },
-  {
-    "name": "GC Schezwan Sauce 1kg",
-    "price": 130,
     "category": "Syrup & Chocolate"
   },
   {
