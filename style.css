@@ -16,6 +16,10 @@ header {
   z-index: 1000;
 }
 
+#cart-section {
+  display: none;
+}
+
 .header-top {
   text-align: center;
   line-height: 1.2;
