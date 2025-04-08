@@ -1,8 +1,9 @@
-// Global cart object
-let cart = {};
-let allProducts = []; // Store all products for category filtering
+// ✅ Shivneri Fresh - Clean JavaScript with Slide-In Cart Panel
 
-// Load products and initialize page
+let cart = {};
+let allProducts = [];
+
+// Load product data
 fetch('products.json')
   .then(res => res.json())
   .then(data => {
@@ -15,6 +16,7 @@ fetch('products.json')
 function displayProducts(products) {
   const productList = document.getElementById('product-list');
   productList.innerHTML = '';
+
   products.forEach(product => {
     const card = document.createElement('div');
     card.className = 'product-card';
@@ -38,17 +40,16 @@ function displayProducts(products) {
 function displayCategories(products) {
   const categoryListDiv = document.getElementById('category-list');
   const categories = ["All", ...new Set(products.map(p => p.category))];
-  categoryListDiv.innerHTML = 
-    categories.map(category => `
-      <button class="category-btn" onclick="filterByCategory('${category}')">${category}</button>
-    `).join('');
+  categoryListDiv.innerHTML = categories.map(category => `
+    <button class="category-btn" onclick="filterByCategory('${category}')">${category}</button>
+  `).join('');
 }
 
 function filterByCategory(category) {
   if (category === "All") {
     displayProducts(allProducts);
   } else {
-    const filtered = allProducts.filter(product => product.category === category);
+    const filtered = allProducts.filter(p => p.category === category);
     displayProducts(filtered);
   }
 }
@@ -67,16 +68,16 @@ function addToCart(name, price) {
     cart[name].quantity += qty;
     document.getElementById(`qty-${name}`).innerText = 0;
     document.getElementById(`incart-${name}`).innerText = `Already in cart: ${cart[name].quantity}`;
-    updateSideCartDisplay();
+    updateCartDisplay();
   }
 }
 
-function updateSideCartDisplay() {
-  const cartItemsContainer = document.getElementById("side-cart-items");
-  const cartCount = document.getElementById("cart-count");
-  const cartTotalDisplay = document.getElementById("side-cart-total");
+function updateCartDisplay() {
+  const cartItems = document.getElementById('side-cart-items');
+  const cartCount = document.getElementById('side-cart-count');
+  const cartTotal = document.getElementById('side-cart-total');
 
-  cartItemsContainer.innerHTML = "";
+  cartItems.innerHTML = '';
   let total = 0;
   let count = 0;
 
@@ -85,33 +86,33 @@ function updateSideCartDisplay() {
     total += itemTotal;
     count += item.quantity;
 
-    const div = document.createElement("div");
-    div.className = "side-cart-item";
+    const div = document.createElement('div');
+    div.className = 'cart-item';
     div.innerHTML = `
-      <p><strong>${name}</strong></p>
-      <p>₹${item.price.toFixed(2)} × ${item.quantity} = ₹${itemTotal.toFixed(2)}</p>
-      <div class="qty-controls">
-        <button onclick="changeCartQty('${name}', -1)">➖</button>
-        <button onclick="changeCartQty('${name}', 1)">➕</button>
-        <button onclick="removeFromCart('${name}')">❌</button>
-      </div>
+      <strong>${name}</strong><br>
+      ₹${item.price.toFixed(2)} x 
+      <button onclick="changeCartQty('${name}', -1)">➖</button>
+      ${item.quantity}
+      <button onclick="changeCartQty('${name}', 1)">➕</button>
+      = ₹${itemTotal.toFixed(2)}
+      <button onclick="removeFromCart('${name}')">❌</button>
     `;
-    cartItemsContainer.appendChild(div);
+    cartItems.appendChild(div);
   });
 
-  cartCount.innerText = count;
-  cartTotalDisplay.textContent = `Grand Total: ₹${total.toFixed(2)}`;
+  cartCount.innerText = `Total Items: ${count}`;
+  cartTotal.innerText = `Grand Total: ₹${total.toFixed(2)}`;
 }
 
 function changeCartQty(name, change) {
   cart[name].quantity += change;
   if (cart[name].quantity <= 0) delete cart[name];
-  updateSideCartDisplay();
+  updateCartDisplay();
 }
 
 function removeFromCart(name) {
   delete cart[name];
-  updateSideCartDisplay();
+  updateCartDisplay();
 }
 
 function setupSearch(products) {
@@ -123,21 +124,19 @@ function setupSearch(products) {
   });
 }
 
-// Slide-In Cart Panel Toggle
-const cartIcon = document.getElementById('cart-icon');
-const closeCart = document.getElementById('close-cart');
-
-cartIcon.addEventListener('click', () => {
-  document.getElementById('side-cart').classList.add('active');
+// Slide-In Cart Toggle
+const sideCart = document.getElementById('side-cart');
+document.getElementById('cart-icon').addEventListener('click', () => {
+  sideCart.classList.add('active');
 });
 
-closeCart.addEventListener('click', () => {
-  document.getElementById('side-cart').classList.remove('active');
+document.getElementById('close-cart').addEventListener('click', () => {
+  sideCart.classList.remove('active');
 });
 
 document.getElementById('clearCart').addEventListener('click', () => {
   cart = {};
-  updateSideCartDisplay();
+  updateCartDisplay();
 });
 
 document.getElementById('placeOrder').addEventListener('click', () => {
@@ -160,29 +159,20 @@ document.getElementById('placeOrder').addEventListener('click', () => {
   window.open(whatsappURL, '_blank');
 });
 
-// Dark/Light mode toggle logic with icon and localStorage
+// Dark Mode Toggle + Remember Preference
 const toggleButton = document.getElementById('themeToggle');
-
-// Set icon and theme based on saved preference
 window.addEventListener('DOMContentLoaded', () => {
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'dark') {
     document.body.classList.add('dark-theme');
     toggleButton.innerHTML = '☀️';
   } else {
-    document.body.classList.remove('dark-theme');
     toggleButton.innerHTML = '🌙';
   }
 });
 
-// Handle toggle click
 toggleButton.addEventListener('click', () => {
-  document.body.classList.toggle('dark-theme');
-  const isDark = document.body.classList.contains('dark-theme');
-
-  // Set icon based on mode
+  const isDark = document.body.classList.toggle('dark-theme');
   toggleButton.innerHTML = isDark ? '☀️' : '🌙';
-
-  // Save preference
   localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
