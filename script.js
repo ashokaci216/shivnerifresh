@@ -98,6 +98,10 @@ function updateCartDisplay() {
   cartCount.innerText = count;
   document.getElementById('totalItems').innerText = `Total Items: ${count}`;
   document.getElementById('cart-total').innerText = `Grand Total: ₹${total.toFixed(2)}`;
+  document.getElementById('clearCart').addEventListener('click', () => {
+  cart = {};
+  updateCartDisplay();
+});
 }
 
 function changeCartQty(name, change) {
