@@ -76,6 +76,8 @@ function updateCartDisplay() {
   const cartItems = document.getElementById('side-cart-items');
   const cartCount = document.getElementById('side-cart-count');
   const cartTotal = document.getElementById('side-cart-total');
+  cartCount.innerText = count;
+  document.getElementById('cart-count').innerText = count;
 
   cartItems.innerHTML = '';
   let total = 0;
