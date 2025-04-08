@@ -123,6 +123,14 @@ function setupSearch(products) {
     displayProducts(filtered);
   });
 }
+// Slide-In Cart Panel Toggle
+document.getElementById('cart-icon').addEventListener('click', () => {
+  document.getElementById('side-cart').classList.add('active');
+});
+
+document.getElementById('close-cart').addEventListener('click', () => {
+  document.getElementById('side-cart').classList.remove('active');
+});
 
 document.getElementById('placeOrder').addEventListener('click', () => {
   // Clear Cart Button
