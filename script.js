@@ -18,19 +18,19 @@ function displayProducts(products) {
   products.forEach(product => {
     const card = document.createElement('div');
     card.className = 'product-card';
-card.innerHTML = `
-  <div class="product-info">
-    <h3>${product.name}</h3>
-    <p>₹${product.price.toFixed(2)}</p>
-  </div>
-  <div class="qty-controls">
-    <button onclick="updateQty('${product.name}', -1)">➖</button>
-    <span id="qty-${product.name}">0</span>
-    <button onclick="updateQty('${product.name}', 1)">➕</button>
-  </div>
-  <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
-  <div class="in-cart" id="incart-${product.name}"></div>
-`;
+    card.innerHTML = `
+      <div class="product-info">
+        <h3>${product.name}</h3>
+        <p>₹${product.price.toFixed(2)}</p>
+      </div>
+      <div class="qty-controls">
+        <button onclick="updateQty('${product.name}', -1)">➖</button>
+        <span id="qty-${product.name}">0</span>
+        <button onclick="updateQty('${product.name}', 1)">➕</button>
+      </div>
+      <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+      <div class="in-cart" id="incart-${product.name}"></div>
+    `;
     productList.appendChild(card);
   });
 }
@@ -67,52 +67,51 @@ function addToCart(name, price) {
     cart[name].quantity += qty;
     document.getElementById(`qty-${name}`).innerText = 0;
     document.getElementById(`incart-${name}`).innerText = `Already in cart: ${cart[name].quantity}`;
-    updateCartDisplay();
+    updateSideCartDisplay();
   }
 }
 
-function updateCartDisplay() {
-  document.getElementById('cart-section').classList.remove('hidden');
-  const cartItems = document.getElementById('cart-items');
-  const cartCount = document.getElementById('cart-count');
-  cartItems.innerHTML = '';
+function updateSideCartDisplay() {
+  const cartItemsContainer = document.getElementById("side-cart-items");
+  const cartCount = document.getElementById("cart-count");
+  const cartTotalDisplay = document.getElementById("side-cart-total");
+
+  cartItemsContainer.innerHTML = "";
   let total = 0;
   let count = 0;
+
   Object.entries(cart).forEach(([name, item]) => {
     const itemTotal = item.price * item.quantity;
     total += itemTotal;
     count += item.quantity;
-    const div = document.createElement('div');
-    div.className = 'cart-item';
+
+    const div = document.createElement("div");
+    div.className = "side-cart-item";
     div.innerHTML = `
-      <strong>${name}</strong><br>
-      ₹${item.price.toFixed(2)} x 
-      <button onclick="changeCartQty('${name}', -1)">➖</button>
-      ${item.quantity}
-      <button onclick="changeCartQty('${name}', 1)">➕</button>
-      = ₹${itemTotal.toFixed(2)}
-      <button onclick="removeFromCart('${name}')">❌</button>
+      <p><strong>${name}</strong></p>
+      <p>₹${item.price.toFixed(2)} × ${item.quantity} = ₹${itemTotal.toFixed(2)}</p>
+      <div class="qty-controls">
+        <button onclick="changeCartQty('${name}', -1)">➖</button>
+        <button onclick="changeCartQty('${name}', 1)">➕</button>
+        <button onclick="removeFromCart('${name}')">❌</button>
+      </div>
     `;
-    cartItems.appendChild(div);
+    cartItemsContainer.appendChild(div);
   });
+
   cartCount.innerText = count;
-  document.getElementById('totalItems').innerText = `Total Items: ${count}`;
-  document.getElementById('cart-total').innerText = `Grand Total: ₹${total.toFixed(2)}`;
-  document.getElementById('clearCart').addEventListener('click', () => {
-  cart = {};
-  updateCartDisplay();
-});
+  cartTotalDisplay.textContent = `Grand Total: ₹${total.toFixed(2)}`;
 }
 
 function changeCartQty(name, change) {
   cart[name].quantity += change;
   if (cart[name].quantity <= 0) delete cart[name];
-  updateCartDisplay();
+  updateSideCartDisplay();
 }
 
 function removeFromCart(name) {
   delete cart[name];
-  updateCartDisplay();
+  updateSideCartDisplay();
 }
 
 function setupSearch(products) {
@@ -123,21 +122,25 @@ function setupSearch(products) {
     displayProducts(filtered);
   });
 }
+
 // Slide-In Cart Panel Toggle
-document.getElementById('cart-icon').addEventListener('click', () => {
+const cartIcon = document.getElementById('cart-icon');
+const closeCart = document.getElementById('close-cart');
+
+cartIcon.addEventListener('click', () => {
   document.getElementById('side-cart').classList.add('active');
 });
 
-document.getElementById('close-cart').addEventListener('click', () => {
+closeCart.addEventListener('click', () => {
   document.getElementById('side-cart').classList.remove('active');
 });
 
-document.getElementById('placeOrder').addEventListener('click', () => {
-  // Clear Cart Button
 document.getElementById('clearCart').addEventListener('click', () => {
   cart = {};
-  updateCartDisplay();
+  updateSideCartDisplay();
 });
+
+document.getElementById('placeOrder').addEventListener('click', () => {
   const name = document.getElementById('customerName').value;
   const address = document.getElementById('customerAddress').value;
   if (!name || !address || Object.keys(cart).length === 0) {
@@ -155,11 +158,6 @@ document.getElementById('clearCart').addEventListener('click', () => {
   message += `\nGrand Total: ₹${total.toFixed(2)}`;
   const whatsappURL = `https://wa.me/919867378209?text=${encodeURIComponent(message)}`;
   window.open(whatsappURL, '_blank');
-});
-
-// Cart icon click scrolls to cart section
-document.getElementById('cart-icon').addEventListener('click', () => {
-  document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
 });
 
 // Dark/Light mode toggle logic with icon and localStorage
