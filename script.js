@@ -121,6 +121,11 @@ function setupSearch(products) {
 }
 
 document.getElementById('placeOrder').addEventListener('click', () => {
+  // Clear Cart Button
+document.getElementById('clearCart').addEventListener('click', () => {
+  cart = {};
+  updateCartDisplay();
+});
   const name = document.getElementById('customerName').value;
   const address = document.getElementById('customerAddress').value;
   if (!name || !address || Object.keys(cart).length === 0) {
