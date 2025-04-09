@@ -123,15 +123,13 @@ function setupSearch(products) {
     displayProducts(filtered);
   });
 }
-// Scroll to cart section when cart icon is clicked
-document.getElementById('cart-icon').addEventListener('click', () => {
-  document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
-});
 
-// Clear Cart button (works anytime)
-document.getElementById('clearCart').addEventListener('click', () => {
-  cart = {};
-  updateCartDisplay();
+document.getElementById('placeOrder').addEventListener('click', () => {
+  // Clear Cart Button
+  document.getElementById('clearCart').addEventListener('click', () => {
+    cart = {};
+    updateCartDisplay();
+  });
 });
 
   const name = document.getElementById('customerName').value;
