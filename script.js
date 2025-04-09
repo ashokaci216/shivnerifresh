@@ -18,19 +18,19 @@ function displayProducts(products) {
   products.forEach(product => {
     const card = document.createElement('div');
     card.className = 'product-card';
-card.innerHTML = `
-  <div class="product-info">
-    <h3>${product.name}</h3>
-    <p>₹${product.price.toFixed(2)}</p>
-  </div>
-  <div class="qty-controls">
-    <button onclick="updateQty('${product.name}', -1)">➖</button>
-    <span id="qty-${product.name}">0</span>
-    <button onclick="updateQty('${product.name}', 1)">➕</button>
-  </div>
-  <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
-  <div class="in-cart" id="incart-${product.name}"></div>
-`;
+    card.innerHTML = `
+      <div class="product-info">
+        <h3>${product.name}</h3>
+        <p>₹${product.price.toFixed(2)}</p>
+      </div>
+      <div class="qty-controls">
+        <button onclick="updateQty('${product.name}', -1)">➖</button>
+        <span id="qty-${product.name}">0</span>
+        <button onclick="updateQty('${product.name}', 1)">➕</button>
+      </div>
+      <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+      <div class="in-cart" id="incart-${product.name}"></div>
+    `;
     productList.appendChild(card);
   });
 }
@@ -98,10 +98,6 @@ function updateCartDisplay() {
   cartCount.innerText = count;
   document.getElementById('totalItems').innerText = `Total Items: ${count}`;
   document.getElementById('cart-total').innerText = `Grand Total: ₹${total.toFixed(2)}`;
-  document.getElementById('clearCart').addEventListener('click', () => {
-  cart = {};
-  updateCartDisplay();
-});
 }
 
 function changeCartQty(name, change) {
@@ -123,21 +119,15 @@ function setupSearch(products) {
     displayProducts(filtered);
   });
 }
-// Slide-In Cart Panel Toggle
-document.getElementById('cart-icon').addEventListener('click', () => {
-  document.getElementById('side-cart').classList.add('active');
-});
 
-document.getElementById('close-cart').addEventListener('click', () => {
-  document.getElementById('side-cart').classList.remove('active');
-});
-
-document.getElementById('placeOrder').addEventListener('click', () => {
-  // Clear Cart Button
+// Clear Cart Button
 document.getElementById('clearCart').addEventListener('click', () => {
   cart = {};
   updateCartDisplay();
 });
+
+// WhatsApp Order Button
+document.getElementById('placeOrder').addEventListener('click', () => {
   const name = document.getElementById('customerName').value;
   const address = document.getElementById('customerAddress').value;
   if (!name || !address || Object.keys(cart).length === 0) {
@@ -157,13 +147,8 @@ document.getElementById('clearCart').addEventListener('click', () => {
   window.open(whatsappURL, '_blank');
 });
 
-// Cart icon click scrolls to cart section
+// Scroll to cart-section when cart icon is clicked
 document.getElementById('cart-icon').addEventListener('click', () => {
-  document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
-});
-
-// ✅ Scroll to cart-section when 🛒 icon is clicked
-document.getElementById('cart-icon').addEventListener('click', function () {
   const cartSection = document.getElementById('cart-section');
   if (cartSection) {
     cartSection.scrollIntoView({ behavior: 'smooth' });
