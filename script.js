@@ -29,7 +29,9 @@ function displayProducts(products) {
         <button onclick="updateQty('${product.name}', 1)">➕</button>
       </div>
       <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
-      <div class="in-cart" id="incart-${product.name}"></div>
+        <div class="in-cart" id="incart-${product.name}">
+    ${cart[product.name] ? `Already in cart: ${cart[product.name].quantity}` : ''}
+  </div>
     `;
     productList.appendChild(card);
   });
