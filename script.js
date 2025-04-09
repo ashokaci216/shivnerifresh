@@ -162,21 +162,6 @@ document.getElementById('cart-icon').addEventListener('click', () => {
   document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
 });
 
-// Dark/Light mode toggle logic with icon and localStorage
-const toggleButton = document.getElementById('themeToggle');
-
-// Set icon and theme based on saved preference
-window.addEventListener('DOMContentLoaded', () => {
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark') {
-    document.body.classList.add('dark-theme');
-    toggleButton.innerHTML = '☀️';
-  } else {
-    document.body.classList.remove('dark-theme');
-    toggleButton.innerHTML = '🌙';
-  }
-});
-
 // Handle toggle click
 toggleButton.addEventListener('click', () => {
   document.body.classList.toggle('dark-theme');
