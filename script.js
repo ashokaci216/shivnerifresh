@@ -162,14 +162,3 @@ document.getElementById('cart-icon').addEventListener('click', () => {
   document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
 });
 
-// Handle toggle click
-toggleButton.addEventListener('click', () => {
-  document.body.classList.toggle('dark-theme');
-  const isDark = document.body.classList.contains('dark-theme');
-
-  // Set icon based on mode
-  toggleButton.innerHTML = isDark ? '☀️' : '🌙';
-
-  // Save preference
-  localStorage.setItem('theme', isDark ? 'dark' : 'light');
-});
