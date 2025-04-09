@@ -123,21 +123,17 @@ function setupSearch(products) {
     displayProducts(filtered);
   });
 }
-// Slide-In Cart Panel Toggle
+// Scroll to cart section when cart icon is clicked
 document.getElementById('cart-icon').addEventListener('click', () => {
-  document.getElementById('side-cart').classList.add('active');
+  document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
 });
 
-document.getElementById('close-cart').addEventListener('click', () => {
-  document.getElementById('side-cart').classList.remove('active');
-});
-
-document.getElementById('placeOrder').addEventListener('click', () => {
-  // Clear Cart Button
+// Clear Cart button (works anytime)
 document.getElementById('clearCart').addEventListener('click', () => {
   cart = {};
   updateCartDisplay();
 });
+
   const name = document.getElementById('customerName').value;
   const address = document.getElementById('customerAddress').value;
   if (!name || !address || Object.keys(cart).length === 0) {
@@ -155,11 +151,6 @@ document.getElementById('clearCart').addEventListener('click', () => {
   message += `\nGrand Total: ₹${total.toFixed(2)}`;
   const whatsappURL = `https://wa.me/919867378209?text=${encodeURIComponent(message)}`;
   window.open(whatsappURL, '_blank');
-});
-
-// Cart icon click scrolls to cart section
-document.getElementById('cart-icon').addEventListener('click', () => {
-  document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
 });
 
 <script>
