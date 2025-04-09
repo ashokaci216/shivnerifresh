@@ -18,19 +18,19 @@ function displayProducts(products) {
   products.forEach(product => {
     const card = document.createElement('div');
     card.className = 'product-card';
-    card.innerHTML = `
-      <div class="product-info">
-        <h3>${product.name}</h3>
-        <p>₹${product.price.toFixed(2)}</p>
-      </div>
-      <div class="qty-controls">
-        <button onclick="updateQty('${product.name}', -1)">➖</button>
-        <span id="qty-${product.name}">0</span>
-        <button onclick="updateQty('${product.name}', 1)">➕</button>
-      </div>
-      <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
-      <div class="in-cart" id="incart-${product.name}"></div>
-    `;
+card.innerHTML = `
+  <div class="product-info">
+    <h3>${product.name}</h3>
+    <p>₹${product.price.toFixed(2)}</p>
+  </div>
+  <div class="qty-controls">
+    <button onclick="updateQty('${product.name}', -1)">➖</button>
+    <span id="qty-${product.name}">0</span>
+    <button onclick="updateQty('${product.name}', 1)">➕</button>
+  </div>
+  <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+  <div class="in-cart" id="incart-${product.name}"></div>
+`;
     productList.appendChild(card);
   });
 }
@@ -98,6 +98,10 @@ function updateCartDisplay() {
   cartCount.innerText = count;
   document.getElementById('totalItems').innerText = `Total Items: ${count}`;
   document.getElementById('cart-total').innerText = `Grand Total: ₹${total.toFixed(2)}`;
+  document.getElementById('clearCart').addEventListener('click', () => {
+  cart = {};
+  updateCartDisplay();
+});
 }
 
 function changeCartQty(name, change) {
@@ -119,26 +123,23 @@ function setupSearch(products) {
     displayProducts(filtered);
   });
 }
-
-// Scroll to cart section on cart icon click
+// Slide-In Cart Panel Toggle
 document.getElementById('cart-icon').addEventListener('click', () => {
-  const cartSection = document.getElementById('cart-section');
-  if (cartSection) {
-    cartSection.scrollIntoView({ behavior: 'smooth' });
-  }
+  document.getElementById('side-cart').classList.add('active');
 });
 
-// Clear Cart Button
+document.getElementById('close-cart').addEventListener('click', () => {
+  document.getElementById('side-cart').classList.remove('active');
+});
+
+document.getElementById('placeOrder').addEventListener('click', () => {
+  // Clear Cart Button
 document.getElementById('clearCart').addEventListener('click', () => {
   cart = {};
   updateCartDisplay();
 });
-
-// WhatsApp Order Button
-document.getElementById('placeOrder').addEventListener('click', () => {
   const name = document.getElementById('customerName').value;
   const address = document.getElementById('customerAddress').value;
-
   if (!name || !address || Object.keys(cart).length === 0) {
     alert('Please fill in customer details and cart items.');
     return;
@@ -146,14 +147,44 @@ document.getElementById('placeOrder').addEventListener('click', () => {
 
   let message = `Order from Shivneri Fresh\n\nCustomer: ${name}\nAddress: ${address}\n\n`;
   let total = 0;
-
   Object.entries(cart).forEach(([product, item]) => {
     const subtotal = item.quantity * item.price;
     message += `${product} - Qty: ${item.quantity}, ₹${subtotal.toFixed(2)}\n`;
     total += subtotal;
   });
-
   message += `\nGrand Total: ₹${total.toFixed(2)}`;
   const whatsappURL = `https://wa.me/919867378209?text=${encodeURIComponent(message)}`;
   window.open(whatsappURL, '_blank');
+});
+
+// Cart icon click scrolls to cart section
+document.getElementById('cart-icon').addEventListener('click', () => {
+  document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
+});
+
+// Dark/Light mode toggle logic with icon and localStorage
+const toggleButton = document.getElementById('themeToggle');
+
+// Set icon and theme based on saved preference
+window.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-theme');
+    toggleButton.innerHTML = '☀️';
+  } else {
+    document.body.classList.remove('dark-theme');
+    toggleButton.innerHTML = '🌙';
+  }
+});
+
+// Handle toggle click
+toggleButton.addEventListener('click', () => {
+  document.body.classList.toggle('dark-theme');
+  const isDark = document.body.classList.contains('dark-theme');
+
+  // Set icon based on mode
+  toggleButton.innerHTML = isDark ? '☀️' : '🌙';
+
+  // Save preference
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
