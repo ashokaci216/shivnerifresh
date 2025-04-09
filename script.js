@@ -74,14 +74,14 @@ function addToCart(name, price) {
 
 function updateCartDisplay() {
   const cartItems = document.getElementById('side-cart-items');
-  const cartCount = document.getElementById('cart-count');
+  const cartCount = document.getElementById('side-cart-count');
   const cartTotal = document.getElementById('side-cart-total');
-  const whatsappOrder = document.getElementById('whatsapp-order');
+  cartCount.innerText = count;
+  document.getElementById('cart-count').innerText = count;
 
   cartItems.innerHTML = '';
   let total = 0;
   let count = 0;
-  let whatsappText = 'https://wa.me/?text=Order%20Details:%0A';
 
   Object.entries(cart).forEach(([name, item]) => {
     const itemTotal = item.price * item.quantity;
@@ -96,19 +96,10 @@ function updateCartDisplay() {
       <button onclick="changeCartQty('${name}', -1)">➖</button>
       ${item.quantity}
       <button onclick="changeCartQty('${name}', 1)">➕</button>
-      = <strong>₹${itemTotal.toFixed(2)}</strong>
+      = ₹${itemTotal.toFixed(2)}
       <button onclick="removeFromCart('${name}')">❌</button>
     `;
     cartItems.appendChild(div);
-
-    whatsappText += `${name} x ${item.quantity} = ₹${itemTotal}%0A`;
-  });
-
-  cartCount.innerText = count;
-  cartTotal.innerHTML = `<strong>Grand Total: ₹${total.toFixed(2)}</strong>`;
-  whatsappText += `Total: ₹${total.toFixed(2)}`;
-  if (whatsappOrder) whatsappOrder.href = whatsappText;
-}
   });
 
   cartCount.innerText = `Total Items: ${count}`;
