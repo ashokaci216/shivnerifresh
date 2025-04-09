@@ -162,4 +162,14 @@ document.getElementById('cart-icon').addEventListener('click', () => {
   document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
 });
 
+<script>
+  document.getElementById("cart-icon").addEventListener("click", function () {
+    const cartSection = document.getElementById("cart-section");
+    if (cartSection) {
+      cartSection.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+</script>
+
+
 
