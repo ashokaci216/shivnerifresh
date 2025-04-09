@@ -1,4 +1,4 @@
-// ✅ Shivneri Fresh - Clean JavaScript with Slide-In Cart Panel
+// ✅ Shivneri Fresh - Final JavaScript with Slide-In Cart Panel
 
 let cart = {};
 let allProducts = [];
@@ -13,6 +13,7 @@ fetch('products.json')
     setupSearch(data);
   });
 
+// Display product cards
 function displayProducts(products) {
   const productList = document.getElementById('product-list');
   productList.innerHTML = '';
@@ -37,6 +38,7 @@ function displayProducts(products) {
   });
 }
 
+// Category buttons
 function displayCategories(products) {
   const categoryListDiv = document.getElementById('category-list');
   const categories = ["All", ...new Set(products.map(p => p.category))];
@@ -54,6 +56,7 @@ function filterByCategory(category) {
   }
 }
 
+// Quantity selector buttons
 function updateQty(name, change) {
   const span = document.getElementById(`qty-${name}`);
   let qty = parseInt(span.innerText) + change;
@@ -61,6 +64,7 @@ function updateQty(name, change) {
   span.innerText = qty;
 }
 
+// Add to cart
 function addToCart(name, price) {
   const qty = parseInt(document.getElementById(`qty-${name}`).innerText);
   if (qty > 0) {
@@ -72,21 +76,24 @@ function addToCart(name, price) {
   }
 }
 
+// Update the side cart panel
 function updateCartDisplay() {
   const cartItems = document.getElementById('side-cart-items');
   const cartCount = document.getElementById('side-cart-count');
   const cartTotal = document.getElementById('side-cart-total');
-  cartCount.innerText = count;
-  document.getElementById('cart-count').innerText = count;
+  const whatsappOrder = document.getElementById('whatsapp-order');
 
-  cartItems.innerHTML = '';
   let total = 0;
   let count = 0;
+  let whatsappText = 'https://wa.me/?text=Order%20Details:%0A';
+
+  cartItems.innerHTML = '';
 
   Object.entries(cart).forEach(([name, item]) => {
     const itemTotal = item.price * item.quantity;
     total += itemTotal;
     count += item.quantity;
+    whatsappText += `${name} x ${item.quantity} = ₹${itemTotal}%0A`;
 
     const div = document.createElement('div');
     div.className = 'cart-item';
@@ -103,78 +110,42 @@ function updateCartDisplay() {
   });
 
   cartCount.innerText = `Total Items: ${count}`;
+  document.getElementById('cart-count').innerText = count;
   cartTotal.innerText = `Grand Total: ₹${total.toFixed(2)}`;
+  whatsappText += `Total: ₹${total.toFixed(2)}`;
+  whatsappOrder.href = whatsappText;
 }
 
+// Change quantity inside cart panel
 function changeCartQty(name, change) {
   cart[name].quantity += change;
   if (cart[name].quantity <= 0) delete cart[name];
   updateCartDisplay();
 }
 
+// Remove item completely from cart
 function removeFromCart(name) {
   delete cart[name];
   updateCartDisplay();
 }
 
+// Clear cart
+function clearCart() {
+  cart = {};
+  updateCartDisplay();
+}
+
+// Open/Close side cart panel
+function toggleCartPanel() {
+  document.getElementById('cart-panel').classList.toggle('open');
+}
+
+// Product search
 function setupSearch(products) {
-  const input = document.getElementById('searchInput');
-  input.addEventListener('input', () => {
-    const keyword = input.value.toLowerCase();
-    const filtered = products.filter(p => p.name.toLowerCase().includes(keyword));
+  const searchInput = document.getElementById('search-input');
+  searchInput.addEventListener('input', function () {
+    const query = searchInput.value.toLowerCase();
+    const filtered = products.filter(p => p.name.toLowerCase().includes(query));
     displayProducts(filtered);
   });
 }
-
-// Slide-In Cart Toggle
-const sideCart = document.getElementById('side-cart');
-document.getElementById('cart-icon').addEventListener('click', () => {
-  sideCart.classList.add('active');
-});
-
-document.getElementById('close-cart').addEventListener('click', () => {
-  sideCart.classList.remove('active');
-});
-
-document.getElementById('clearCart').addEventListener('click', () => {
-  cart = {};
-  updateCartDisplay();
-});
-
-document.getElementById('placeOrder').addEventListener('click', () => {
-  const name = document.getElementById('customerName').value;
-  const address = document.getElementById('customerAddress').value;
-  if (!name || !address || Object.keys(cart).length === 0) {
-    alert('Please fill in customer details and cart items.');
-    return;
-  }
-
-  let message = `Order from Shivneri Fresh\n\nCustomer: ${name}\nAddress: ${address}\n\n`;
-  let total = 0;
-  Object.entries(cart).forEach(([product, item]) => {
-    const subtotal = item.quantity * item.price;
-    message += `${product} - Qty: ${item.quantity}, ₹${subtotal.toFixed(2)}\n`;
-    total += subtotal;
-  });
-  message += `\nGrand Total: ₹${total.toFixed(2)}`;
-  const whatsappURL = `https://wa.me/919867378209?text=${encodeURIComponent(message)}`;
-  window.open(whatsappURL, '_blank');
-});
-
-// Dark Mode Toggle + Remember Preference
-const toggleButton = document.getElementById('themeToggle');
-window.addEventListener('DOMContentLoaded', () => {
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark') {
-    document.body.classList.add('dark-theme');
-    toggleButton.innerHTML = '☀️';
-  } else {
-    toggleButton.innerHTML = '🌙';
-  }
-});
-
-toggleButton.addEventListener('click', () => {
-  const isDark = document.body.classList.toggle('dark-theme');
-  toggleButton.innerHTML = isDark ? '☀️' : '🌙';
-  localStorage.setItem('theme', isDark ? 'dark' : 'light');
-});
