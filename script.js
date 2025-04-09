@@ -1,5 +1,3 @@
-// ✅ Shivneri Fresh - Clean JavaScript with Slide-In Cart Panel
-
 let cart = {};
 let allProducts = [];
 
@@ -115,5 +113,3 @@ function changeCartQty(name, change) {
 function removeFromCart(name) {
   delete cart[name];
   updateCartDisplay();
-
-
