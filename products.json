@@ -1,3 +1,4 @@
+
 [
   {
     "name": "WG Classic Veg Mayo 1Kg",
@@ -178,11 +179,6 @@
     "name": "Hillers Vinegar 650ml",
     "price": 30,
     "category": "Mayo and Sauces"
-  },
-  {
-    "name": "Hillers Schezwan Chutney 1kg",
-    "price": 130,
-    "category": "Syrup & Chocolate"
   },
   {
     "name": "Chings Chilli Sauce 680gm",
@@ -369,7 +365,11 @@
     "price": 140,
     "category": "Syrup & Chocolate"
   },
-  
+  {
+    "name": "Mala's Kacha Aam Syrup 750ml",
+    "price": 140,
+    "category": "Syrup & Chocolate"
+  },
   {
     "name": "Malas Kacha Aam Syrup 750 ml",
     "price": 140,
@@ -498,6 +498,16 @@
   {
     "name": "Frappe powder Mojee 1kg",
     "price": 420,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "Hillers Schezwan Chutney 1kg",
+    "price": 130,
+    "category": "Syrup & Chocolate"
+  },
+  {
+    "name": "GC Schezwan Sauce 1kg",
+    "price": 130,
     "category": "Syrup & Chocolate"
   },
   {
