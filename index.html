@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,18 +7,30 @@
   <title>Shivneri Fresh</title>
   <link rel="stylesheet" href="style.css">
 </head>
+  <!-- Slide-In Cart Panel -->
+<div id="side-cart">
+  <div class="side-cart-header">
+    <h2>Your Cart</h2>
+    <button id="close-cart">❌</button>
+  </div>
+  <div id="side-cart-items"></div>
+  <div id="side-cart-total"></div>
+  <button id="clearCart">Clear Cart</button>
+  <h3>Order Details</h3>
+  <input type="text" id="customerName" placeholder="Customer Name" />
+  <textarea id="customerAddress" placeholder="Customer Address"></textarea>
+  <button id="placeOrder">Place Order via WhatsApp</button>
+</div>
 <body>
   <header>
     <div class="header-top">
-      <h1>Shivneri Fresh</h1>
-      <p class="contact">Mafco Market, Vashi | 📞 9967538209</p>
-      <button id="themeToggle">🌙</button>   
-    </div>
+  <h1>Shivneri Fresh</h1>
+  <p class="contact">Mafco Market, Vashi | 📞 9967538209</p> <button id="themeToggle">🌙</button>   
+</div>
     <div id="category-list"></div>
     <div id="search-bar">
       <input type="text" id="searchInput" placeholder="Search products..." />
-      <!-- ✅ Cart Icon -->
-      <div id="cart-icon" onclick="toggleCartPanel()">🛒 <span id="cart-count">0</span></div>
+      <div id="cart-icon">🛒<span id="cart-count">0</span></div>
     </div>
   </header>
 
@@ -25,28 +38,25 @@
     <section id="product-list"></section>
   </main>
 
-  <!-- ✅ Slide-In Cart Panel -->
-  <div id="cart-panel" class="cart-panel">
-    <button class="close-btn" onclick="toggleCartPanel()">×</button>
+  <section id="cart-section" class="hidden">
     <h2>Your Cart</h2>
-    <div id="side-cart-items"></div>
-    <p id="side-cart-count">Total Items: 0</p>
-    <p id="side-cart-total">Grand Total: ₹0.00</p>
-    <button onclick="clearCart()">Clear Cart</button>
-
+    <div id="cart-items"></div>
+    <div id="cart-total"></div>
+    
+    <button id="clearCart">Clear Cart</button>
+    <p id="totalItems"></p>
+    
     <h3>Order Details</h3>
     <input type="text" id="customerName" placeholder="Customer Name" />
     <textarea id="customerAddress" placeholder="Customer Address"></textarea>
-    <a id="whatsapp-order" target="_blank">
-      <button id="placeOrder">Place Order via WhatsApp</button>
-    </a>
-  </div>
+    <button id="placeOrder">Place Order via WhatsApp</button>
+  </section>
 
   <script src="script.js"></script>
   <script> 
-    document.getElementById('themeToggle').addEventListener('click', function () {
-      document.body.classList.toggle('dark-mode');
-    });
+  document.getElementById('themeToggle').addEventListener('click',function(){
+   document.body.classList.toggle('dark-mode');
+  });
   </script>  
 </body>
 </html>
