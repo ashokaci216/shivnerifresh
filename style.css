@@ -16,10 +16,6 @@ header {
   z-index: 1000;
 }
 
-#cart-section {
-  display: none;
-}
-
 .header-top {
   text-align: center;
   line-height: 1.2;
@@ -160,21 +156,6 @@ main {
   margin-bottom: 1em;
 }
 
-#clearCart {
-  background: #ff4d4d;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
-#clearCart:hover {
-  background: #e60000;
-}
-
 #customerName, #customerAddress {
   width: 100%;
   padding: 10px;
@@ -276,42 +257,6 @@ body:not(.dark-theme) .product-card {
 body:not(.dark-theme) .product-card h3,
 body:not(.dark-theme) .product-card p {
   color: black;
-}
-
-/* Slide-in Cart Panel */
-#side-cart {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 350px;
-  height: 100vh;
-  background: white;
-  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  z-index: 2000;
-  transition: right 0.3s ease;
-  overflow-y: auto;
-}
-
-#side-cart.active {
-  right: 0;
-}
-
-.side-cart-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#side-cart h2 {
-  margin: 0;
-}
-
-#close-cart {
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
 }
 
 @media (max-width: 768px) {
