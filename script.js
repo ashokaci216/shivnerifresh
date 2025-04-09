@@ -98,6 +98,24 @@ function updateCartDisplay() {
   cartCount.innerText = count;
   document.getElementById('totalItems').innerText = `Total Items: ${count}`;
   document.getElementById('cart-total').innerText = `Grand Total: ₹${total.toFixed(2)}`;
+    // ✅ Update "Already in cart" text
+  Object.keys(cart).forEach(name => {
+    const incartText = document.getElementById(`incart-${name}`);
+    if (incartText) {
+      incartText.innerText = `Already in cart: ${cart[name].quantity}`;
+    }
+  });
+
+  // ✅ Clear text for items no longer in cart
+  allProducts.forEach(product => {
+    if (!cart[product.name]) {
+      const incartText = document.getElementById(`incart-${product.name}`);
+      if (incartText) {
+        incartText.innerText = '';
+      }
+    }
+  });
+
 }
 
 function changeCartQty(name, change) {
@@ -109,7 +127,7 @@ function changeCartQty(name, change) {
 function removeFromCart(name) {
   delete cart[name];
   updateCartDisplay();
-}
+ }
 
 function setupSearch(products) {
   const input = document.getElementById('searchInput');
